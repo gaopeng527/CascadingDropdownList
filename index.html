@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Bootstrap实现级联下拉菜单（Dropdowns）</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+ </head>
+ <body>
+<table>
+	<tr>
+		<td>
+			<div class="dropdown">
+				 <button type="button" class="btn dropdown-toggle" id="dropdownMenu0" data-toggle="dropdown" onclick="initFunction()">
+					省
+					<span class="caret"></span>
+				 </button>
+				 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu0" id="0" >
+				</ul>
+			</div>
+		</td>
+		<td>
+			<div class="dropdown">
+				 <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+					市
+					<span class="caret"></span>
+				 </button>
+				 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="1">				
+				</ul>
+			</div>
+		</td>
+			<td>
+			<div class="dropdown">
+				 <button type="button" class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">
+					区
+					<span class="caret"></span>
+				 </button>
+				 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="2">
+				</ul>
+			</div>
+		</td>
+	</tr>
+ </table>
+ <script>
+		// 初始化
+		function initFunction(){
+			var a = [
+						[{ "text": "辽宁", "child": [ {"city":"大连", "index": "0"}, {"city":"沈阳", "index": "1"} ] }, 
+						 { "text": "广东", "child": [ {"city":"广州", "index": "2"}, {"city":"深圳", "index": "3"} ] }],
+						[{ "text": "大连", "child": [ {"city":"甘井子区", "index": "0"}, {"city":"高新区", "index": "1"} ] },
+						 { "text": "沈阳", "child": [ {"city":"大东区", "index": "2"}, {"city":"和平区", "index": "3"}, {"city":"沈河区", "index": "4"} ] },
+						 { "text": "广州", "child": [ {"city":"越秀区", "index": "5"}, {"city":"白云区", "index": "6"} ] },
+						 { "text": "深圳", "child": [ {"city":"福田区", "index": "7"}, {"city":"罗湖区", "index": "8"} ] } ],
+						[{ "text": "甘井子区" }, { "text": "高新区" }, { "text": "大东区" }, { "text": "和平区" }, { "text": "沈河区" }, { "text": "越秀区" },
+						 { "text": "白云区" }, { "text": "福田区" }, { "text": "罗湖区" } ]
+            ];
+			var sb = "";
+			for(var i=0;i<a[0].length;i++){
+				sb += "<li><a id=";
+				sb += 0;
+				sb += " name=";
+				sb += i;
+				sb += " onclick='myFunction(id, name)'>";
+				sb += a[0][i].text;
+				sb += "</a></li> ";
+			}
+			// 初始化省信息
+			x=document.getElementById(0);
+			x.innerHTML = sb;
+			// 初始化市信息
+			y=document.getElementById("dropdownMenu"+1);
+			y.innerHTML = "市"+"<span class='caret'></span>";
+			// 初始化县信息
+			z=document.getElementById("dropdownMenu"+2);
+			z.innerHTML = "区"+"<span class='caret'></span>";
+
+		}
+
+        function myFunction(id, name){
+			var a = [
+						[{ "text": "辽宁", "child": [ {"city":"大连", "index": "0"}, {"city":"沈阳", "index": "1"} ] }, 
+						 { "text": "广东", "child": [ {"city":"广州", "index": "2"}, {"city":"深圳", "index": "3"} ] }],
+						[{ "text": "大连", "child": [ {"city":"甘井子区", "index": "0"}, {"city":"高新区", "index": "1"} ] },
+						 { "text": "沈阳", "child": [ {"city":"大东区", "index": "2"}, {"city":"和平区", "index": "3"}, {"city":"沈河区", "index": "4"} ] },
+						 { "text": "广州", "child": [ {"city":"越秀区", "index": "5"}, {"city":"白云区", "index": "6"} ] },
+						 { "text": "深圳", "child": [ {"city":"福田区", "index": "7"}, {"city":"罗湖区", "index": "8"} ] } ],
+						[{ "text": "甘井子区" }, { "text": "高新区" }, { "text": "大东区" }, { "text": "和平区" }, { "text": "沈河区" }, { "text": "越秀区" },
+						 { "text": "白云区" }, { "text": "福田区" }, { "text": "罗湖区" } ]
+            ];
+			id = parseInt(id,10); // 在列表的第几列
+			var sb = ""; // 改变下一列需要插入的html代码
+		    var j = parseInt(name); // 在该列中的位置
+			x=document.getElementById("dropdownMenu"+id);
+			x.innerHTML=a[id][j].text+"<span class='caret'></span>";
+			console.log(a[0][0].text);
+			if(id+1==a.length)
+				return;
+			// 生成需要插入的代码
+			for(var i=0;i<a[id][j].child.length;i++){
+				sb += "<li><a id=";
+				sb += (id+1);
+				sb += " name=";
+				sb += a[id][j].child[i].index;
+				sb += " onclick='myFunction(id, name)'>";
+				sb += a[id][j].child[i].city;
+				sb += "</a></li> ";
+			}
+			// 向下一列插入
+			y=document.getElementById(""+(id+1));
+			y.innerHTML = sb;
+		}
+</script>
+</body>
+</html>
