@@ -1,0 +1,11 @@
+[
+	[{ "city": "辽宁", "index": "0", "child": [ {"city":"大连", "index": "0"}, {"city":"沈阳", "index": "1"} ] }, 
+	 { "city": "广东", "index": "1", "child": [ {"city":"广州", "index": "2"}, {"city":"深圳", "index": "3"} ] }],
+	[{ "city": "大连", "index": "0", "child": [ {"city":"甘井子区", "index": "0"}, {"city":"高新区", "index": "1"} ] },
+	 { "city": "沈阳", "index": "1", "child": [ {"city":"大东区", "index": "2"}, {"city":"和平区", "index": "3"}, {"city":"沈河区", "index": "4"} ] },
+	 { "city": "广州", "index": "2", "child": [ {"city":"越秀区", "index": "5"}, {"city":"白云区", "index": "6"} ] },
+	 { "city": "深圳", "index": "3", "child": [ {"city":"福田区", "index": "7"}, {"city":"罗湖区", "index": "8"} ] } ],
+	[{ "city": "甘井子区" }, { "city": "高新区" }, { "city": "大东区" }, { "city": "和平区" }, { "city": "沈河区" }, { "city": "越秀区" },
+	{ "city": "白云区" }, { "city": "福田区" }, { "city": "罗湖区" } ],
+	[{"text": "省" }, {"text": "市" }, {"text": "区" }]
+]
